@@ -1,0 +1,20 @@
+2017-05-19 09:49:41,558 INFO  [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+2017-05-19 09:49:41,640 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing Root WebApplicationContext: startup date [Fri May 19 09:49:41 CST 2017]; root of context hierarchy
+2017-05-19 09:49:41,679 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [E:\workspaces\studio-parent\studio-console\target\classes\spring\applicationContext-dao.xml]
+2017-05-19 09:49:41,753 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [E:\workspaces\studio-parent\studio-console\target\classes\spring\applicationContext-service.xml]
+2017-05-19 09:49:41,787 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from file [E:\workspaces\studio-parent\studio-console\target\classes\spring\applicationContext-trans.xml]
+2017-05-19 09:49:42,001 WARN  [org.mybatis.spring.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.free.studio.mapper]' package. Please check your configuration.
+2017-05-19 09:49:42,015 INFO  [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from file [E:\workspaces\studio-parent\studio-console\target\classes\resource\db.properties]
+2017-05-19 09:49:42,016 INFO  [org.springframework.context.support.PropertySourcesPlaceholderConfigurer] - Loading properties file from file [E:\workspaces\studio-parent\studio-console\target\classes\resource\resource.properties]
+2017-05-19 09:49:42,022 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-05-19 09:49:42,427 INFO  [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 866 ms
+2017-05-19 09:49:42,462 INFO  [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'studio-console': initialization started
+2017-05-19 09:49:42,464 INFO  [org.springframework.web.context.support.XmlWebApplicationContext] - Refreshing WebApplicationContext for namespace 'studio-console-servlet': startup date [Fri May 19 09:49:42 CST 2017]; parent: Root WebApplicationContext
+2017-05-19 09:49:42,465 INFO  [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring/springmvc.xml]
+2017-05-19 09:49:42,562 INFO  [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2017-05-19 09:49:42,999 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: WebApplicationContext for namespace 'studio-console-servlet': startup date [Fri May 19 09:49:42 CST 2017]; parent: Root WebApplicationContext
+2017-05-19 09:49:43,041 INFO  [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: WebApplicationContext for namespace 'studio-console-servlet': startup date [Fri May 19 09:49:42 CST 2017]; parent: Root WebApplicationContext
+2017-05-19 09:49:43,138 INFO  [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2017-05-19 09:49:43,139 INFO  [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2017-05-19 09:49:43,140 INFO  [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2017-05-19 09:49:43,180 INFO  [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'studio-console': initialization completed in 717 ms
