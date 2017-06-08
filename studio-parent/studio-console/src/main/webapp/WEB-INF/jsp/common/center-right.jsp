@@ -8,5 +8,7 @@
 		
 	  </div>
 	</nav>
-欢迎使用系统！
+	<div id="mainPanel">
+	    
+	</div>
 </nav>
