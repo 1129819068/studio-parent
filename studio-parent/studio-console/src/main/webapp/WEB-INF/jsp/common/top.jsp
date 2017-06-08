@@ -2,26 +2,34 @@
 <link rel="stylesheet" type="text/css" href="css/common/top.css">
 <script type="text/javascript" src="js/common/top.js"></script>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid" style="height: 65px;">
-    <div class="navbar-header" style="height: 65px;float: left;width: 25%">
+<!-- 系统菜单 -->
+<nav class="navbar navbar-default" style="margin-bottom: 3px;height: 65px;">
+  <div class="container-fluid">
+    <div class="navbar-header" style="float: left;width: 25%">
       <a class="navbar-brand" href="#">
         <img alt="Brand" src="images/common/zhfw-logo.png" style="height: 40px;">
       </a>
     </div>
-    <div style="height: 65px;float: left;width: 70%">
+    <div style="float: left;width: 64%">
 		<nav role="navigation" style="margin-top: 12.5px;">
 		  <ul class="nav navbar-nav nav-justified">
-		    <li class="active"><a href="#">首页</a></li>
+		    <li class="active"><a href="#"><i class="icon icon-home"></i>首页</a></li>
 		    <li><a href="#">污染源监控</a></li>
 		    <li><a href="#">系统管理</a></li>
 		  </ul>
 		</nav>
     </div>
-    <div style="height: 65px;float: left;width: 5%">
+    <div style="float: left;width: 11%">
 		<nav role="navigation" style="margin-top: 12.5px;">
 		  <ul class="nav navbar-nav nav-justified">
-		  	<li><a href="#" style="text-align: right;">admin<i class="icon icon-caret-down"></i></a></li>
+			  <li class="dropdown">
+			    <a class="dropdown-toggle" data-toggle="dropdown" href="###">admin<span class="caret"></span></a>
+			    <ul class="dropdown-menu">
+			      <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon icon-user"></i>用户信息</a></li>
+			      <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon icon-lock"></i>更改密码</a></li>
+			      <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon icon-off"></i>退出系统</a></li>
+			    </ul>
+			  </li>
 		  </ul>
 		</nav>
     </div>

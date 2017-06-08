@@ -11,9 +11,13 @@
 <title>首页</title>
 </head>
 <body>
-	<!-- 左侧 -->
-	<jsp:include page="center-left.jsp"></jsp:include>
-	<!-- 右侧 -->
-	<jsp:include page="center-right.jsp"></jsp:include>
+	<nav class="navbar" style="height: auto;min-height:625px;margin-bottom: 3px;">
+	  <div class="container-fluid">
+	  	<!-- 左侧 -->
+		<jsp:include page="center-left.jsp"></jsp:include>
+		<!-- 右侧 -->
+		<jsp:include page="center-right.jsp"></jsp:include>
+	  </div>
+	</nav>
 </body>
 </html>
