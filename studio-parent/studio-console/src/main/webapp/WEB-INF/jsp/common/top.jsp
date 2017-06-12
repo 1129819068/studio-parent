@@ -13,9 +13,6 @@
     <div style="float: left;width: 64%">
 		<nav role="navigation" style="margin-top: 12.5px;">
 		  <ul class="nav navbar-nav nav-justified">
-		    <li><a href="#">污染源监控</a></li>
-		    <li><a href="#">安全消防</a></li>
-		    <li><a href="#">智能家居</a></li>
 		    <li><a href="#">系统管理</a></li>
 		  </ul>
 		</nav>
