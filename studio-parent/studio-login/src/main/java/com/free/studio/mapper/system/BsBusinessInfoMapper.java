@@ -10,7 +10,7 @@ public interface BsBusinessInfoMapper {
 
     int deleteByExample(BsBusinessInfoExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String businessId);
 
     int insert(BsBusinessInfo record);
 
@@ -18,7 +18,7 @@ public interface BsBusinessInfoMapper {
 
     List<BsBusinessInfo> selectByExample(BsBusinessInfoExample example);
 
-    BsBusinessInfo selectByPrimaryKey(Integer id);
+    BsBusinessInfo selectByPrimaryKey(String businessId);
 
     int updateByExampleSelective(@Param("record") BsBusinessInfo record, @Param("example") BsBusinessInfoExample example);
 

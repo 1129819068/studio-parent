@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsSystemLogMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsSystemLog" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <id column="pid" property="pid" jdbcType="VARCHAR" />
     <result column="operate_name" property="operateName" jdbcType="VARCHAR" />
     <result column="operate_person" property="operatePerson" jdbcType="VARCHAR" />
     <result column="operate_ip" property="operateIp" jdbcType="VARCHAR" />
@@ -74,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, pid, operate_name, operate_person, operate_ip, operate_describe, create_name, 
-    create_time, modify_name, modify_time, remark, system_id
+    pid, operate_name, operate_person, operate_ip, operate_describe, create_name, create_time, 
+    modify_name, modify_time, remark, system_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsSystemLogExample" >
     select
@@ -91,15 +90,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_system_log
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_system_log
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsSystemLogExample" >
     delete from bs_system_log
@@ -108,23 +107,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsSystemLog" >
-    insert into bs_system_log (id, pid, operate_name, 
-      operate_person, operate_ip, operate_describe, 
-      create_name, create_time, modify_name, 
-      modify_time, remark, system_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{operateName,jdbcType=VARCHAR}, 
-      #{operatePerson,jdbcType=VARCHAR}, #{operateIp,jdbcType=VARCHAR}, #{operateDescribe,jdbcType=VARCHAR}, 
-      #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, 
-      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR}
-      )
+    insert into bs_system_log (pid, operate_name, operate_person, 
+      operate_ip, operate_describe, create_name, 
+      create_time, modify_name, modify_time, 
+      remark, system_id)
+    values (#{pid,jdbcType=VARCHAR}, #{operateName,jdbcType=VARCHAR}, #{operatePerson,jdbcType=VARCHAR}, 
+      #{operateIp,jdbcType=VARCHAR}, #{operateDescribe,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsSystemLog" >
     insert into bs_system_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="pid != null" >
         pid,
       </if>
@@ -160,9 +154,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="pid != null" >
         #{pid,jdbcType=VARCHAR},
       </if>
@@ -207,9 +198,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_system_log
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.pid != null" >
         pid = #{record.pid,jdbcType=VARCHAR},
       </if>
@@ -250,8 +238,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_system_log
-    set id = #{record.id,jdbcType=INTEGER},
-      pid = #{record.pid,jdbcType=VARCHAR},
+    set pid = #{record.pid,jdbcType=VARCHAR},
       operate_name = #{record.operateName,jdbcType=VARCHAR},
       operate_person = #{record.operatePerson,jdbcType=VARCHAR},
       operate_ip = #{record.operateIp,jdbcType=VARCHAR},
@@ -269,9 +256,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsSystemLog" >
     update bs_system_log
     <set >
-      <if test="pid != null" >
-        pid = #{pid,jdbcType=VARCHAR},
-      </if>
       <if test="operateName != null" >
         operate_name = #{operateName,jdbcType=VARCHAR},
       </if>
@@ -303,12 +287,11 @@
         system_id = #{systemId,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsSystemLog" >
     update bs_system_log
-    set pid = #{pid,jdbcType=VARCHAR},
-      operate_name = #{operateName,jdbcType=VARCHAR},
+    set operate_name = #{operateName,jdbcType=VARCHAR},
       operate_person = #{operatePerson,jdbcType=VARCHAR},
       operate_ip = #{operateIp,jdbcType=VARCHAR},
       operate_describe = #{operateDescribe,jdbcType=VARCHAR},
@@ -318,6 +301,6 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
       system_id = #{systemId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </update>
 </mapper>

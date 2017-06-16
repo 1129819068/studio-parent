@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsTabMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsTab" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="tab_id" property="tabId" jdbcType="VARCHAR" />
+    <id column="tab_id" property="tabId" jdbcType="VARCHAR" />
     <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -77,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, tab_id, menu_id, title, name, css, value, image, tip, tab_describe, create_name, 
+    tab_id, menu_id, title, name, css, value, image, tip, tab_describe, create_name, 
     create_time, modify_name, modify_time, remark
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsTabExample" >
@@ -94,15 +93,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_tab
-    where id = #{id,jdbcType=INTEGER}
+    where tab_id = #{tabId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_tab
-    where id = #{id,jdbcType=INTEGER}
+    where tab_id = #{tabId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsTabExample" >
     delete from bs_tab
@@ -111,23 +110,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsTab" >
-    insert into bs_tab (id, tab_id, menu_id, 
-      title, name, css, value, 
-      image, tip, tab_describe, 
-      create_name, create_time, modify_name, 
-      modify_time, remark)
-    values (#{id,jdbcType=INTEGER}, #{tabId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{css,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
-      #{image,jdbcType=VARCHAR}, #{tip,jdbcType=VARCHAR}, #{tabDescribe,jdbcType=VARCHAR}, 
-      #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, 
-      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+    insert into bs_tab (tab_id, menu_id, title, 
+      name, css, value, image, 
+      tip, tab_describe, create_name, 
+      create_time, modify_name, modify_time, 
+      remark)
+    values (#{tabId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{css,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{tip,jdbcType=VARCHAR}, #{tabDescribe,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsTab" >
     insert into bs_tab
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="tabId != null" >
         tab_id,
       </if>
@@ -172,9 +168,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="tabId != null" >
         #{tabId,jdbcType=VARCHAR},
       </if>
@@ -228,9 +221,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_tab
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.tabId != null" >
         tab_id = #{record.tabId,jdbcType=VARCHAR},
       </if>
@@ -280,8 +270,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_tab
-    set id = #{record.id,jdbcType=INTEGER},
-      tab_id = #{record.tabId,jdbcType=VARCHAR},
+    set tab_id = #{record.tabId,jdbcType=VARCHAR},
       menu_id = #{record.menuId,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
@@ -302,9 +291,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsTab" >
     update bs_tab
     <set >
-      <if test="tabId != null" >
-        tab_id = #{tabId,jdbcType=VARCHAR},
-      </if>
       <if test="menuId != null" >
         menu_id = #{menuId,jdbcType=VARCHAR},
       </if>
@@ -345,12 +331,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where tab_id = #{tabId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsTab" >
     update bs_tab
-    set tab_id = #{tabId,jdbcType=VARCHAR},
-      menu_id = #{menuId,jdbcType=VARCHAR},
+    set menu_id = #{menuId,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       css = #{css,jdbcType=VARCHAR},
@@ -363,6 +348,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where tab_id = #{tabId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -10,7 +10,7 @@ public interface BsUserMapper {
 
     int deleteByExample(BsUserExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String userName);
 
     int insert(BsUser record);
 
@@ -18,7 +18,7 @@ public interface BsUserMapper {
 
     List<BsUser> selectByExample(BsUserExample example);
 
-    BsUser selectByPrimaryKey(Integer id);
+    BsUser selectByPrimaryKey(String userName);
 
     int updateByExampleSelective(@Param("record") BsUser record, @Param("example") BsUserExample example);
 

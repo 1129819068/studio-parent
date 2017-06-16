@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsDepartmentInfoMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsDepartmentInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="department_id" property="departmentId" jdbcType="VARCHAR" />
+    <id column="department_id" property="departmentId" jdbcType="VARCHAR" />
     <result column="business_id" property="businessId" jdbcType="VARCHAR" />
     <result column="department_name" property="departmentName" jdbcType="VARCHAR" />
     <result column="department_describe" property="departmentDescribe" jdbcType="VARCHAR" />
@@ -73,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, department_id, business_id, department_name, department_describe, status, create_name, 
+    department_id, business_id, department_name, department_describe, status, create_name, 
     create_time, modify_name, modify_time, remark
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsDepartmentInfoExample" >
@@ -90,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_department_info
-    where id = #{id,jdbcType=INTEGER}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_department_info
-    where id = #{id,jdbcType=INTEGER}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsDepartmentInfoExample" >
     delete from bs_department_info
@@ -107,21 +106,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsDepartmentInfo" >
-    insert into bs_department_info (id, department_id, business_id, 
-      department_name, department_describe, status, 
-      create_name, create_time, modify_name, 
-      modify_time, remark)
-    values (#{id,jdbcType=INTEGER}, #{departmentId,jdbcType=VARCHAR}, #{businessId,jdbcType=VARCHAR}, 
-      #{departmentName,jdbcType=VARCHAR}, #{departmentDescribe,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, 
-      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+    insert into bs_department_info (department_id, business_id, department_name, 
+      department_describe, status, create_name, 
+      create_time, modify_name, modify_time, 
+      remark)
+    values (#{departmentId,jdbcType=VARCHAR}, #{businessId,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, 
+      #{departmentDescribe,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsDepartmentInfo" >
     insert into bs_department_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="departmentId != null" >
         department_id,
       </if>
@@ -154,9 +150,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="departmentId != null" >
         #{departmentId,jdbcType=VARCHAR},
       </if>
@@ -198,9 +191,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_department_info
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.departmentId != null" >
         department_id = #{record.departmentId,jdbcType=VARCHAR},
       </if>
@@ -238,8 +228,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_department_info
-    set id = #{record.id,jdbcType=INTEGER},
-      department_id = #{record.departmentId,jdbcType=VARCHAR},
+    set department_id = #{record.departmentId,jdbcType=VARCHAR},
       business_id = #{record.businessId,jdbcType=VARCHAR},
       department_name = #{record.departmentName,jdbcType=VARCHAR},
       department_describe = #{record.departmentDescribe,jdbcType=VARCHAR},
@@ -256,9 +245,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsDepartmentInfo" >
     update bs_department_info
     <set >
-      <if test="departmentId != null" >
-        department_id = #{departmentId,jdbcType=VARCHAR},
-      </if>
       <if test="businessId != null" >
         business_id = #{businessId,jdbcType=VARCHAR},
       </if>
@@ -287,12 +273,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsDepartmentInfo" >
     update bs_department_info
-    set department_id = #{departmentId,jdbcType=VARCHAR},
-      business_id = #{businessId,jdbcType=VARCHAR},
+    set business_id = #{businessId,jdbcType=VARCHAR},
       department_name = #{departmentName,jdbcType=VARCHAR},
       department_describe = #{departmentDescribe,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
@@ -301,6 +286,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where department_id = #{departmentId,jdbcType=VARCHAR}
   </update>
 </mapper>

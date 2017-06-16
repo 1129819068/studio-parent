@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsMenu {
-    private Integer id;
-
     private String menuId;
 
     private String parentMenuId;
@@ -32,14 +30,6 @@ public class BsMenu {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getMenuId() {
         return menuId;

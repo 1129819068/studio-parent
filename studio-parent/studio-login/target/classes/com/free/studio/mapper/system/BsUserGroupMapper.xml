@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsUserGroupMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsUserGroup" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="group_id" property="groupId" jdbcType="VARCHAR" />
+    <id column="group_id" property="groupId" jdbcType="VARCHAR" />
     <result column="group_name" property="groupName" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="group_type" property="groupType" jdbcType="VARCHAR" />
@@ -73,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, group_id, group_name, status, group_type, create_name, create_time, modify_name, 
+    group_id, group_name, status, group_type, create_name, create_time, modify_name, 
     modify_time, remark, system_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsUserGroupExample" >
@@ -90,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_user_group
-    where id = #{id,jdbcType=INTEGER}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_user_group
-    where id = #{id,jdbcType=INTEGER}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsUserGroupExample" >
     delete from bs_user_group
@@ -107,21 +106,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsUserGroup" >
-    insert into bs_user_group (id, group_id, group_name, 
-      status, group_type, create_name, 
-      create_time, modify_name, modify_time, 
-      remark, system_id)
-    values (#{id,jdbcType=INTEGER}, #{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{groupType,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR})
+    insert into bs_user_group (group_id, group_name, status, 
+      group_type, create_name, create_time, 
+      modify_name, modify_time, remark, 
+      system_id)
+    values (#{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{groupType,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{systemId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsUserGroup" >
     insert into bs_user_group
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="groupId != null" >
         group_id,
       </if>
@@ -154,9 +150,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="groupId != null" >
         #{groupId,jdbcType=VARCHAR},
       </if>
@@ -198,9 +191,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_user_group
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.groupId != null" >
         group_id = #{record.groupId,jdbcType=VARCHAR},
       </if>
@@ -238,8 +228,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_user_group
-    set id = #{record.id,jdbcType=INTEGER},
-      group_id = #{record.groupId,jdbcType=VARCHAR},
+    set group_id = #{record.groupId,jdbcType=VARCHAR},
       group_name = #{record.groupName,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=VARCHAR},
       group_type = #{record.groupType,jdbcType=VARCHAR},
@@ -256,9 +245,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsUserGroup" >
     update bs_user_group
     <set >
-      <if test="groupId != null" >
-        group_id = #{groupId,jdbcType=VARCHAR},
-      </if>
       <if test="groupName != null" >
         group_name = #{groupName,jdbcType=VARCHAR},
       </if>
@@ -287,12 +273,11 @@
         system_id = #{systemId,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsUserGroup" >
     update bs_user_group
-    set group_id = #{groupId,jdbcType=VARCHAR},
-      group_name = #{groupName,jdbcType=VARCHAR},
+    set group_name = #{groupName,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       group_type = #{groupType,jdbcType=VARCHAR},
       create_name = #{createName,jdbcType=VARCHAR},
@@ -301,6 +286,6 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
       system_id = #{systemId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where group_id = #{groupId,jdbcType=VARCHAR}
   </update>
 </mapper>

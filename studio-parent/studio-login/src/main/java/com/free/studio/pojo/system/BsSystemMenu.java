@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsSystemMenu {
-    private Integer id;
-
     private String pid;
 
     private String menuId;
@@ -22,14 +20,6 @@ public class BsSystemMenu {
     private String remark;
 
     private String systemId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getPid() {
         return pid;

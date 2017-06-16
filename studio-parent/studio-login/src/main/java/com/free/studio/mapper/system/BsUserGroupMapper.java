@@ -10,7 +10,7 @@ public interface BsUserGroupMapper {
 
     int deleteByExample(BsUserGroupExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String groupId);
 
     int insert(BsUserGroup record);
 
@@ -18,7 +18,7 @@ public interface BsUserGroupMapper {
 
     List<BsUserGroup> selectByExample(BsUserGroupExample example);
 
-    BsUserGroup selectByPrimaryKey(Integer id);
+    BsUserGroup selectByPrimaryKey(String groupId);
 
     int updateByExampleSelective(@Param("record") BsUserGroup record, @Param("example") BsUserGroupExample example);
 

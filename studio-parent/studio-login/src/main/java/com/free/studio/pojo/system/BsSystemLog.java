@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsSystemLog {
-    private Integer id;
-
     private String pid;
 
     private String operateName;
@@ -26,14 +24,6 @@ public class BsSystemLog {
     private String remark;
 
     private String systemId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getPid() {
         return pid;

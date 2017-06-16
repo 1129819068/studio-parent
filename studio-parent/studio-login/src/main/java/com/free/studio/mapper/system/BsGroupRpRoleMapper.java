@@ -10,7 +10,7 @@ public interface BsGroupRpRoleMapper {
 
     int deleteByExample(BsGroupRpRoleExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String pid);
 
     int insert(BsGroupRpRole record);
 
@@ -18,7 +18,7 @@ public interface BsGroupRpRoleMapper {
 
     List<BsGroupRpRole> selectByExample(BsGroupRpRoleExample example);
 
-    BsGroupRpRole selectByPrimaryKey(Integer id);
+    BsGroupRpRole selectByPrimaryKey(String pid);
 
     int updateByExampleSelective(@Param("record") BsGroupRpRole record, @Param("example") BsGroupRpRoleExample example);
 

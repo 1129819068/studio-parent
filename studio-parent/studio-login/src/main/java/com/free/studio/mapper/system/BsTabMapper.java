@@ -10,7 +10,7 @@ public interface BsTabMapper {
 
     int deleteByExample(BsTabExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String tabId);
 
     int insert(BsTab record);
 
@@ -18,7 +18,7 @@ public interface BsTabMapper {
 
     List<BsTab> selectByExample(BsTabExample example);
 
-    BsTab selectByPrimaryKey(Integer id);
+    BsTab selectByPrimaryKey(String tabId);
 
     int updateByExampleSelective(@Param("record") BsTab record, @Param("example") BsTabExample example);
 

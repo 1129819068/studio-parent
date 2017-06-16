@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsButton {
-    private Integer id;
-
     private String buttonId;
 
     private String tabId;
@@ -28,14 +26,6 @@ public class BsButton {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getButtonId() {
         return buttonId;

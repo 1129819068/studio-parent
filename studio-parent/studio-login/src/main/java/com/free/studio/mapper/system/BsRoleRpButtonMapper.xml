@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsRoleRpButtonMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsRoleRpButton" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <id column="pid" property="pid" jdbcType="VARCHAR" />
     <result column="role_id" property="roleId" jdbcType="VARCHAR" />
     <result column="button_id" property="buttonId" jdbcType="VARCHAR" />
     <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
@@ -72,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, pid, role_id, button_id, menu_id, create_name, create_time, modify_name, modify_time, 
+    pid, role_id, button_id, menu_id, create_name, create_time, modify_name, modify_time, 
     remark
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsRoleRpButtonExample" >
@@ -89,15 +88,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_role_rp_button
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_role_rp_button
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsRoleRpButtonExample" >
     delete from bs_role_rp_button
@@ -106,21 +105,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsRoleRpButton" >
-    insert into bs_role_rp_button (id, pid, role_id, 
-      button_id, menu_id, create_name, 
-      create_time, modify_name, modify_time, 
-      remark)
-    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
-      #{buttonId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR})
+    insert into bs_role_rp_button (pid, role_id, button_id, 
+      menu_id, create_name, create_time, 
+      modify_name, modify_time, remark
+      )
+    values (#{pid,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{buttonId,jdbcType=VARCHAR}, 
+      #{menuId,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsRoleRpButton" >
     insert into bs_role_rp_button
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="pid != null" >
         pid,
       </if>
@@ -150,9 +146,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="pid != null" >
         #{pid,jdbcType=VARCHAR},
       </if>
@@ -191,9 +184,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_role_rp_button
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.pid != null" >
         pid = #{record.pid,jdbcType=VARCHAR},
       </if>
@@ -228,8 +218,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_role_rp_button
-    set id = #{record.id,jdbcType=INTEGER},
-      pid = #{record.pid,jdbcType=VARCHAR},
+    set pid = #{record.pid,jdbcType=VARCHAR},
       role_id = #{record.roleId,jdbcType=VARCHAR},
       button_id = #{record.buttonId,jdbcType=VARCHAR},
       menu_id = #{record.menuId,jdbcType=VARCHAR},
@@ -245,9 +234,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsRoleRpButton" >
     update bs_role_rp_button
     <set >
-      <if test="pid != null" >
-        pid = #{pid,jdbcType=VARCHAR},
-      </if>
       <if test="roleId != null" >
         role_id = #{roleId,jdbcType=VARCHAR},
       </if>
@@ -273,12 +259,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsRoleRpButton" >
     update bs_role_rp_button
-    set pid = #{pid,jdbcType=VARCHAR},
-      role_id = #{roleId,jdbcType=VARCHAR},
+    set role_id = #{roleId,jdbcType=VARCHAR},
       button_id = #{buttonId,jdbcType=VARCHAR},
       menu_id = #{menuId,jdbcType=VARCHAR},
       create_name = #{createName,jdbcType=VARCHAR},
@@ -286,6 +271,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=VARCHAR}
   </update>
 </mapper>

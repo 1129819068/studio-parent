@@ -10,7 +10,7 @@ public interface BsButtonMapper {
 
     int deleteByExample(BsButtonExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String buttonId);
 
     int insert(BsButton record);
 
@@ -18,7 +18,7 @@ public interface BsButtonMapper {
 
     List<BsButton> selectByExample(BsButtonExample example);
 
-    BsButton selectByPrimaryKey(Integer id);
+    BsButton selectByPrimaryKey(String buttonId);
 
     int updateByExampleSelective(@Param("record") BsButton record, @Param("example") BsButtonExample example);
 

@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsRoleMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsRole" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="role_type" property="roleType" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
@@ -73,8 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, role_id, role_name, role_type, status, create_name, create_time, modify_name, 
-    modify_time, remark, system_id
+    role_id, role_name, role_type, status, create_name, create_time, modify_name, modify_time, 
+    remark, system_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsRoleExample" >
     select
@@ -90,15 +89,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_role
-    where id = #{id,jdbcType=INTEGER}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_role
-    where id = #{id,jdbcType=INTEGER}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsRoleExample" >
     delete from bs_role
@@ -107,21 +106,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsRole" >
-    insert into bs_role (id, role_id, role_name, 
-      role_type, status, create_name, 
-      create_time, modify_name, modify_time, 
-      remark, system_id)
-    values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, 
-      #{roleType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR})
+    insert into bs_role (role_id, role_name, role_type, 
+      status, create_name, create_time, 
+      modify_name, modify_time, remark, 
+      system_id)
+    values (#{roleId,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{systemId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsRole" >
     insert into bs_role
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="roleId != null" >
         role_id,
       </if>
@@ -154,9 +150,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="roleId != null" >
         #{roleId,jdbcType=VARCHAR},
       </if>
@@ -198,9 +191,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_role
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.roleId != null" >
         role_id = #{record.roleId,jdbcType=VARCHAR},
       </if>
@@ -238,8 +228,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_role
-    set id = #{record.id,jdbcType=INTEGER},
-      role_id = #{record.roleId,jdbcType=VARCHAR},
+    set role_id = #{record.roleId,jdbcType=VARCHAR},
       role_name = #{record.roleName,jdbcType=VARCHAR},
       role_type = #{record.roleType,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=VARCHAR},
@@ -256,9 +245,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsRole" >
     update bs_role
     <set >
-      <if test="roleId != null" >
-        role_id = #{roleId,jdbcType=VARCHAR},
-      </if>
       <if test="roleName != null" >
         role_name = #{roleName,jdbcType=VARCHAR},
       </if>
@@ -287,12 +273,11 @@
         system_id = #{systemId,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsRole" >
     update bs_role
-    set role_id = #{roleId,jdbcType=VARCHAR},
-      role_name = #{roleName,jdbcType=VARCHAR},
+    set role_name = #{roleName,jdbcType=VARCHAR},
       role_type = #{roleType,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       create_name = #{createName,jdbcType=VARCHAR},
@@ -301,6 +286,6 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR},
       system_id = #{systemId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where role_id = #{roleId,jdbcType=VARCHAR}
   </update>
 </mapper>

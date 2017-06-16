@@ -10,7 +10,7 @@ public interface BsRoleRpMenuMapper {
 
     int deleteByExample(BsRoleRpMenuExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String pid);
 
     int insert(BsRoleRpMenu record);
 
@@ -18,7 +18,7 @@ public interface BsRoleRpMenuMapper {
 
     List<BsRoleRpMenu> selectByExample(BsRoleRpMenuExample example);
 
-    BsRoleRpMenu selectByPrimaryKey(Integer id);
+    BsRoleRpMenu selectByPrimaryKey(String pid);
 
     int updateByExampleSelective(@Param("record") BsRoleRpMenu record, @Param("example") BsRoleRpMenuExample example);
 

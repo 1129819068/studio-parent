@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsButtonMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsButton" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="button_id" property="buttonId" jdbcType="VARCHAR" />
+    <id column="button_id" property="buttonId" jdbcType="VARCHAR" />
     <result column="tab_id" property="tabId" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="value" property="value" jdbcType="VARCHAR" />
@@ -75,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, button_id, tab_id, name, value, css, image, tip, create_name, create_time, modify_name, 
+    button_id, tab_id, name, value, css, image, tip, create_name, create_time, modify_name, 
     modify_time, remark
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsButtonExample" >
@@ -92,15 +91,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_button
-    where id = #{id,jdbcType=INTEGER}
+    where button_id = #{buttonId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_button
-    where id = #{id,jdbcType=INTEGER}
+    where button_id = #{buttonId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsButtonExample" >
     delete from bs_button
@@ -109,13 +108,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsButton" >
-    insert into bs_button (id, button_id, tab_id, 
-      name, value, css, image, 
+    insert into bs_button (button_id, tab_id, name, 
+      value, css, image, 
       tip, create_name, create_time, 
       modify_name, modify_time, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{buttonId,jdbcType=VARCHAR}, #{tabId,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{css,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+    values (#{buttonId,jdbcType=VARCHAR}, #{tabId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{value,jdbcType=VARCHAR}, #{css,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
       #{tip,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
       )
@@ -123,9 +122,6 @@
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsButton" >
     insert into bs_button
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="buttonId != null" >
         button_id,
       </if>
@@ -164,9 +160,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="buttonId != null" >
         #{buttonId,jdbcType=VARCHAR},
       </if>
@@ -214,9 +207,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_button
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.buttonId != null" >
         button_id = #{record.buttonId,jdbcType=VARCHAR},
       </if>
@@ -260,8 +250,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_button
-    set id = #{record.id,jdbcType=INTEGER},
-      button_id = #{record.buttonId,jdbcType=VARCHAR},
+    set button_id = #{record.buttonId,jdbcType=VARCHAR},
       tab_id = #{record.tabId,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       value = #{record.value,jdbcType=VARCHAR},
@@ -280,9 +269,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsButton" >
     update bs_button
     <set >
-      <if test="buttonId != null" >
-        button_id = #{buttonId,jdbcType=VARCHAR},
-      </if>
       <if test="tabId != null" >
         tab_id = #{tabId,jdbcType=VARCHAR},
       </if>
@@ -317,12 +303,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where button_id = #{buttonId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsButton" >
     update bs_button
-    set button_id = #{buttonId,jdbcType=VARCHAR},
-      tab_id = #{tabId,jdbcType=VARCHAR},
+    set tab_id = #{tabId,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       value = #{value,jdbcType=VARCHAR},
       css = #{css,jdbcType=VARCHAR},
@@ -333,6 +318,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where button_id = #{buttonId,jdbcType=VARCHAR}
   </update>
 </mapper>

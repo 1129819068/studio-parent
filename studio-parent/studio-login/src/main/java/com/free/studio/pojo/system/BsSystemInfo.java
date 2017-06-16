@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsSystemInfo {
-    private Integer id;
-
     private String systemId;
 
     private String superName;
@@ -28,14 +26,6 @@ public class BsSystemInfo {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getSystemId() {
         return systemId;

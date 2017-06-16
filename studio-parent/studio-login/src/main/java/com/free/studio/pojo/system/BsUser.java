@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsUser {
-    private Integer id;
-
     private String userName;
 
     private String groupId;
@@ -70,14 +68,6 @@ public class BsUser {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUserName() {
         return userName;

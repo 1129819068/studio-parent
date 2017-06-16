@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsMenuMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsMenu" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="menu_id" property="menuId" jdbcType="VARCHAR" />
+    <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
     <result column="parent_menu_id" property="parentMenuId" jdbcType="VARCHAR" />
     <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
     <result column="is_leaf" property="isLeaf" jdbcType="VARCHAR" />
@@ -77,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, menu_id, parent_menu_id, menu_name, is_leaf, menu_url, menu_image, css, menu_tip, 
+    menu_id, parent_menu_id, menu_name, is_leaf, menu_url, menu_image, css, menu_tip, 
     status, create_name, create_time, modify_name, modify_time, remark
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsMenuExample" >
@@ -94,15 +93,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_menu
-    where id = #{id,jdbcType=INTEGER}
+    where menu_id = #{menuId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_menu
-    where id = #{id,jdbcType=INTEGER}
+    where menu_id = #{menuId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsMenuExample" >
     delete from bs_menu
@@ -111,25 +110,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsMenu" >
-    insert into bs_menu (id, menu_id, parent_menu_id, 
-      menu_name, is_leaf, menu_url, 
-      menu_image, css, menu_tip, 
-      status, create_name, create_time, 
-      modify_name, modify_time, remark
-      )
-    values (#{id,jdbcType=INTEGER}, #{menuId,jdbcType=VARCHAR}, #{parentMenuId,jdbcType=VARCHAR}, 
-      #{menuName,jdbcType=VARCHAR}, #{isLeaf,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, 
-      #{menuImage,jdbcType=VARCHAR}, #{css,jdbcType=VARCHAR}, #{menuTip,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
-      )
+    insert into bs_menu (menu_id, parent_menu_id, menu_name, 
+      is_leaf, menu_url, menu_image, 
+      css, menu_tip, status, 
+      create_name, create_time, modify_name, 
+      modify_time, remark)
+    values (#{menuId,jdbcType=VARCHAR}, #{parentMenuId,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{isLeaf,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR}, #{menuImage,jdbcType=VARCHAR}, 
+      #{css,jdbcType=VARCHAR}, #{menuTip,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsMenu" >
     insert into bs_menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="menuId != null" >
         menu_id,
       </if>
@@ -174,9 +168,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="menuId != null" >
         #{menuId,jdbcType=VARCHAR},
       </if>
@@ -230,9 +221,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_menu
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.menuId != null" >
         menu_id = #{record.menuId,jdbcType=VARCHAR},
       </if>
@@ -282,8 +270,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_menu
-    set id = #{record.id,jdbcType=INTEGER},
-      menu_id = #{record.menuId,jdbcType=VARCHAR},
+    set menu_id = #{record.menuId,jdbcType=VARCHAR},
       parent_menu_id = #{record.parentMenuId,jdbcType=VARCHAR},
       menu_name = #{record.menuName,jdbcType=VARCHAR},
       is_leaf = #{record.isLeaf,jdbcType=VARCHAR},
@@ -304,9 +291,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsMenu" >
     update bs_menu
     <set >
-      <if test="menuId != null" >
-        menu_id = #{menuId,jdbcType=VARCHAR},
-      </if>
       <if test="parentMenuId != null" >
         parent_menu_id = #{parentMenuId,jdbcType=VARCHAR},
       </if>
@@ -347,12 +331,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where menu_id = #{menuId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsMenu" >
     update bs_menu
-    set menu_id = #{menuId,jdbcType=VARCHAR},
-      parent_menu_id = #{parentMenuId,jdbcType=VARCHAR},
+    set parent_menu_id = #{parentMenuId,jdbcType=VARCHAR},
       menu_name = #{menuName,jdbcType=VARCHAR},
       is_leaf = #{isLeaf,jdbcType=VARCHAR},
       menu_url = #{menuUrl,jdbcType=VARCHAR},
@@ -365,6 +348,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where menu_id = #{menuId,jdbcType=VARCHAR}
   </update>
 </mapper>

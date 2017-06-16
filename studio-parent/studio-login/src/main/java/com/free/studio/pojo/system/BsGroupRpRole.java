@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsGroupRpRole {
-    private Integer id;
-
     private String pid;
 
     private String groupId;
@@ -22,14 +20,6 @@ public class BsGroupRpRole {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getPid() {
         return pid;

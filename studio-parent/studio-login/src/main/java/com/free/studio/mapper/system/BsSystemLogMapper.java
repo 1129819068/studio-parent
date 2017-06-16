@@ -10,7 +10,7 @@ public interface BsSystemLogMapper {
 
     int deleteByExample(BsSystemLogExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String pid);
 
     int insert(BsSystemLog record);
 
@@ -18,7 +18,7 @@ public interface BsSystemLogMapper {
 
     List<BsSystemLog> selectByExample(BsSystemLogExample example);
 
-    BsSystemLog selectByPrimaryKey(Integer id);
+    BsSystemLog selectByPrimaryKey(String pid);
 
     int updateByExampleSelective(@Param("record") BsSystemLog record, @Param("example") BsSystemLogExample example);
 

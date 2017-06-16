@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsUserMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsUser" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <id column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="group_id" property="groupId" jdbcType="VARCHAR" />
     <result column="department_id" property="departmentId" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -96,7 +95,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_name, group_id, department_id, password, true_name, nick_name, sex, card_id, 
+    user_name, group_id, department_id, password, true_name, nick_name, sex, card_id, 
     job_title, qq, wechat, skype, phone, telephone, email, user_address, post_code, head_image, 
     qr_code, status, email_is_verif, user_type, login_number, last_login_time, password_modify_time, 
     password_modify_mode, password_error_number, user_lock_time, create_name, create_time, 
@@ -116,15 +115,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_user
-    where id = #{id,jdbcType=INTEGER}
+    where user_name = #{userName,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_user
-    where id = #{id,jdbcType=INTEGER}
+    where user_name = #{userName,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsUserExample" >
     delete from bs_user
@@ -133,39 +132,34 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsUser" >
-    insert into bs_user (id, user_name, group_id, 
-      department_id, password, true_name, 
-      nick_name, sex, card_id, 
-      job_title, qq, wechat, 
-      skype, phone, telephone, 
-      email, user_address, post_code, 
-      head_image, qr_code, status, 
-      email_is_verif, user_type, login_number, 
-      last_login_time, password_modify_time, 
-      password_modify_mode, password_error_number, 
-      user_lock_time, create_name, create_time, 
-      modify_name, modify_time, remark
-      )
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, 
-      #{departmentId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, 
-      #{nickName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
-      #{jobTitle,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, 
-      #{skype,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{userAddress,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, 
-      #{headImage,jdbcType=VARCHAR}, #{qrCode,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{emailIsVerif,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, #{loginNumber,jdbcType=INTEGER}, 
-      #{lastLoginTime,jdbcType=TIMESTAMP}, #{passwordModifyTime,jdbcType=TIMESTAMP}, 
-      #{passwordModifyMode,jdbcType=VARCHAR}, #{passwordErrorNumber,jdbcType=INTEGER}, 
-      #{userLockTime,jdbcType=TIMESTAMP}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
-      )
+    insert into bs_user (user_name, group_id, department_id, 
+      password, true_name, nick_name, 
+      sex, card_id, job_title, 
+      qq, wechat, skype, 
+      phone, telephone, email, 
+      user_address, post_code, head_image, 
+      qr_code, status, email_is_verif, 
+      user_type, login_number, last_login_time, 
+      password_modify_time, password_modify_mode, 
+      password_error_number, user_lock_time, create_name, 
+      create_time, modify_name, modify_time, 
+      remark)
+    values (#{userName,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{departmentId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{trueName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, #{jobTitle,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR}, #{skype,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{userAddress,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{headImage,jdbcType=VARCHAR}, 
+      #{qrCode,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{emailIsVerif,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=VARCHAR}, #{loginNumber,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{passwordModifyTime,jdbcType=TIMESTAMP}, #{passwordModifyMode,jdbcType=VARCHAR}, 
+      #{passwordErrorNumber,jdbcType=INTEGER}, #{userLockTime,jdbcType=TIMESTAMP}, #{createName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsUser" >
     insert into bs_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="userName != null" >
         user_name,
       </if>
@@ -267,9 +261,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="userName != null" >
         #{userName,jdbcType=VARCHAR},
       </if>
@@ -380,9 +371,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_user
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.userName != null" >
         user_name = #{record.userName,jdbcType=VARCHAR},
       </if>
@@ -489,8 +477,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_user
-    set id = #{record.id,jdbcType=INTEGER},
-      user_name = #{record.userName,jdbcType=VARCHAR},
+    set user_name = #{record.userName,jdbcType=VARCHAR},
       group_id = #{record.groupId,jdbcType=VARCHAR},
       department_id = #{record.departmentId,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
@@ -530,9 +517,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsUser" >
     update bs_user
     <set >
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
       <if test="groupId != null" >
         group_id = #{groupId,jdbcType=VARCHAR},
       </if>
@@ -630,12 +614,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where user_name = #{userName,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsUser" >
     update bs_user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      group_id = #{groupId,jdbcType=VARCHAR},
+    set group_id = #{groupId,jdbcType=VARCHAR},
       department_id = #{departmentId,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       true_name = #{trueName,jdbcType=VARCHAR},
@@ -667,6 +650,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where user_name = #{userName,jdbcType=VARCHAR}
   </update>
 </mapper>

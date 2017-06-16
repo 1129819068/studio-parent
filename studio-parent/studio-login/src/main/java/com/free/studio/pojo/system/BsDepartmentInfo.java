@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsDepartmentInfo {
-    private Integer id;
-
     private String departmentId;
 
     private String businessId;
@@ -24,14 +22,6 @@ public class BsDepartmentInfo {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getDepartmentId() {
         return departmentId;

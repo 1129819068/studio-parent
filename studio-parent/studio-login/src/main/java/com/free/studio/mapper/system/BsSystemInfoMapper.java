@@ -10,7 +10,7 @@ public interface BsSystemInfoMapper {
 
     int deleteByExample(BsSystemInfoExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String systemId);
 
     int insert(BsSystemInfo record);
 
@@ -18,7 +18,7 @@ public interface BsSystemInfoMapper {
 
     List<BsSystemInfo> selectByExample(BsSystemInfoExample example);
 
-    BsSystemInfo selectByPrimaryKey(Integer id);
+    BsSystemInfo selectByPrimaryKey(String systemId);
 
     int updateByExampleSelective(@Param("record") BsSystemInfo record, @Param("example") BsSystemInfoExample example);
 

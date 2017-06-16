@@ -10,7 +10,7 @@ public interface BsMenuMapper {
 
     int deleteByExample(BsMenuExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String menuId);
 
     int insert(BsMenu record);
 
@@ -18,7 +18,7 @@ public interface BsMenuMapper {
 
     List<BsMenu> selectByExample(BsMenuExample example);
 
-    BsMenu selectByPrimaryKey(Integer id);
+    BsMenu selectByPrimaryKey(String menuId);
 
     int updateByExampleSelective(@Param("record") BsMenu record, @Param("example") BsMenuExample example);
 

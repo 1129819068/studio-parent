@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.free.studio.mapper.system.BsSystemInfoMapper" >
   <resultMap id="BaseResultMap" type="com.free.studio.pojo.system.BsSystemInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="system_id" property="systemId" jdbcType="VARCHAR" />
+    <id column="system_id" property="systemId" jdbcType="VARCHAR" />
     <result column="super_name" property="superName" jdbcType="VARCHAR" />
     <result column="super_password" property="superPassword" jdbcType="VARCHAR" />
     <result column="system_abbreviate" property="systemAbbreviate" jdbcType="VARCHAR" />
@@ -75,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, system_id, super_name, super_password, system_abbreviate, company_name, company_logo, 
+    system_id, super_name, super_password, system_abbreviate, company_name, company_logo, 
     status, create_name, create_time, modify_name, modify_time, remark
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.free.studio.pojo.system.BsSystemInfoExample" >
@@ -92,15 +91,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from bs_system_info
-    where id = #{id,jdbcType=INTEGER}
+    where system_id = #{systemId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from bs_system_info
-    where id = #{id,jdbcType=INTEGER}
+    where system_id = #{systemId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.free.studio.pojo.system.BsSystemInfoExample" >
     delete from bs_system_info
@@ -109,23 +108,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.free.studio.pojo.system.BsSystemInfo" >
-    insert into bs_system_info (id, system_id, super_name, 
-      super_password, system_abbreviate, company_name, 
-      company_logo, status, create_name, 
-      create_time, modify_name, modify_time, 
-      remark)
-    values (#{id,jdbcType=INTEGER}, #{systemId,jdbcType=VARCHAR}, #{superName,jdbcType=VARCHAR}, 
-      #{superPassword,jdbcType=VARCHAR}, #{systemAbbreviate,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
-      #{companyLogo,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR})
+    insert into bs_system_info (system_id, super_name, super_password, 
+      system_abbreviate, company_name, company_logo, 
+      status, create_name, create_time, 
+      modify_name, modify_time, remark
+      )
+    values (#{systemId,jdbcType=VARCHAR}, #{superName,jdbcType=VARCHAR}, #{superPassword,jdbcType=VARCHAR}, 
+      #{systemAbbreviate,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{companyLogo,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyName,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.free.studio.pojo.system.BsSystemInfo" >
     insert into bs_system_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
       <if test="systemId != null" >
         system_id,
       </if>
@@ -164,9 +160,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="systemId != null" >
         #{systemId,jdbcType=VARCHAR},
       </if>
@@ -214,9 +207,6 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update bs_system_info
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
       <if test="record.systemId != null" >
         system_id = #{record.systemId,jdbcType=VARCHAR},
       </if>
@@ -260,8 +250,7 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update bs_system_info
-    set id = #{record.id,jdbcType=INTEGER},
-      system_id = #{record.systemId,jdbcType=VARCHAR},
+    set system_id = #{record.systemId,jdbcType=VARCHAR},
       super_name = #{record.superName,jdbcType=VARCHAR},
       super_password = #{record.superPassword,jdbcType=VARCHAR},
       system_abbreviate = #{record.systemAbbreviate,jdbcType=VARCHAR},
@@ -280,9 +269,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.free.studio.pojo.system.BsSystemInfo" >
     update bs_system_info
     <set >
-      <if test="systemId != null" >
-        system_id = #{systemId,jdbcType=VARCHAR},
-      </if>
       <if test="superName != null" >
         super_name = #{superName,jdbcType=VARCHAR},
       </if>
@@ -317,12 +303,11 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where system_id = #{systemId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.free.studio.pojo.system.BsSystemInfo" >
     update bs_system_info
-    set system_id = #{systemId,jdbcType=VARCHAR},
-      super_name = #{superName,jdbcType=VARCHAR},
+    set super_name = #{superName,jdbcType=VARCHAR},
       super_password = #{superPassword,jdbcType=VARCHAR},
       system_abbreviate = #{systemAbbreviate,jdbcType=VARCHAR},
       company_name = #{companyName,jdbcType=VARCHAR},
@@ -333,6 +318,6 @@
       modify_name = #{modifyName,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
       remark = #{remark,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where system_id = #{systemId,jdbcType=VARCHAR}
   </update>
 </mapper>

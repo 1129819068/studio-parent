@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <link rel="stylesheet" type="text/css" href="css/common/top.css">
-<script type="text/javascript" src="js/common/top.js"></script>
+
 
 <!-- 系统菜单 -->
 <nav class="navbar navbar-default" style="margin-bottom: 3px;height: 65px;">
@@ -12,8 +13,8 @@
     </div>
     <div style="float: left;width: 64%">
 		<nav role="navigation" style="margin-top: 12.5px;">
-		  <ul class="nav navbar-nav nav-justified">
-		    <li><a href="#">系统管理</a></li>
+		  <ul class="nav navbar-nav nav-justified" id="topMenu">
+
 		  </ul>
 		</nav>
     </div>
@@ -33,3 +34,4 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript" src="js/common/top.js"></script>

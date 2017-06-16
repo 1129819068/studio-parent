@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsRole {
-    private Integer id;
-
     private String roleId;
 
     private String roleName;
@@ -24,14 +22,6 @@ public class BsRole {
     private String remark;
 
     private String systemId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getRoleId() {
         return roleId;

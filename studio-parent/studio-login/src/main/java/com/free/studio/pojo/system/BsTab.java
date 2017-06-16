@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsTab {
-    private Integer id;
-
     private String tabId;
 
     private String menuId;
@@ -32,14 +30,6 @@ public class BsTab {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getTabId() {
         return tabId;

@@ -10,7 +10,7 @@ public interface BsRoleRpTabMapper {
 
     int deleteByExample(BsRoleRpTabExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String pid);
 
     int insert(BsRoleRpTab record);
 
@@ -18,7 +18,7 @@ public interface BsRoleRpTabMapper {
 
     List<BsRoleRpTab> selectByExample(BsRoleRpTabExample example);
 
-    BsRoleRpTab selectByPrimaryKey(Integer id);
+    BsRoleRpTab selectByPrimaryKey(String pid);
 
     int updateByExampleSelective(@Param("record") BsRoleRpTab record, @Param("example") BsRoleRpTabExample example);
 

@@ -3,8 +3,6 @@ package com.free.studio.pojo.system;
 import java.util.Date;
 
 public class BsRoleRpButton {
-    private Integer id;
-
     private String pid;
 
     private String roleId;
@@ -22,14 +20,6 @@ public class BsRoleRpButton {
     private Date modifyTime;
 
     private String remark;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getPid() {
         return pid;

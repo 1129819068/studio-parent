@@ -10,7 +10,7 @@ public interface BsRoleRpButtonMapper {
 
     int deleteByExample(BsRoleRpButtonExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String pid);
 
     int insert(BsRoleRpButton record);
 
@@ -18,7 +18,7 @@ public interface BsRoleRpButtonMapper {
 
     List<BsRoleRpButton> selectByExample(BsRoleRpButtonExample example);
 
-    BsRoleRpButton selectByPrimaryKey(Integer id);
+    BsRoleRpButton selectByPrimaryKey(String pid);
 
     int updateByExampleSelective(@Param("record") BsRoleRpButton record, @Param("example") BsRoleRpButtonExample example);
 
