@@ -11,4 +11,8 @@ package com.free.studio.constants;
 public class Constant {
 
 	public final static String TOP_MENU_PARENT_ID="0";
+	
+	public final static String SYSTEM_STATUS_OF_YES="YES";
+	public final static String SYSTEM_STATUS_OF_NO="NO";
+	
 }

@@ -2,16 +2,16 @@ package com.free.studio.controller.login.system;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.free.studio.pojo.system.BsMenu;
 import com.free.studio.service.system.IIndexService;
+import com.free.studio.view.system.MenuView;
 
 /**
  * <p>Title: IndexController.java</p>
@@ -37,7 +37,7 @@ public class IndexController {
 	 * @throws
 	 */
 
-	@RequestMapping("/")
+	@RequestMapping("/welcome")
 	public String index() {
 		return "common/index";
 	}
@@ -50,7 +50,7 @@ public class IndexController {
 	 * @return String  
 	 * @throws
 	 */
-	@RequestMapping("/login/system/comon/welcome.html")
+	@RequestMapping("/login/system/comon/welcome")
 	public String welcome(){
 		return "common/welcome";
 	}
@@ -61,7 +61,7 @@ public class IndexController {
 	 * <p>Description: 获取顶级菜单</p>
 	 * @return
 	 */
-	@RequestMapping("/login/system/common/topmenu.html")
+	@RequestMapping("/login/system/common/topmenu")
 	public ModelAndView findTopMenu(){
 		List<BsMenu> menuList=indexService.findTopMenu();
 	    ModelMap map=new ModelMap();
@@ -71,14 +71,14 @@ public class IndexController {
 	
 	/**
 	 * 
-	 * @Title: getMenu 
-	 * @Description: 获取菜单
-	 * @param   
-	 * @return ModelAndView  
-	 * @throws
+	 * <p>Title: getLeftMenu</p>
+	 * <p>Description: 获取左侧菜单</p>
+	 * @return
 	 */
-	@RequestMapping("/login/system/common/menu.html")
-	public ModelAndView getMenu() {
-		return new ModelAndView("common/menu.jsp");
+	@ResponseBody
+	@RequestMapping("/login/system/common/leftmenu")
+	public MenuView getLeftMenu() {
+		MenuView menuView=indexService.findLeftMenu("MU20170612000001");
+		return menuView;
 	}
 }

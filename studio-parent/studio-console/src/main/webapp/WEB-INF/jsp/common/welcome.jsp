@@ -3,5 +3,5 @@
 <script type="text/javascript" src="js/common/welcome.js"></script>
 
 <div style="text-align: center;line-height: 15;font-size: 30px">
-		 欢迎使用基本框架！</div>
+		 欢迎访问！</div>
 </div>

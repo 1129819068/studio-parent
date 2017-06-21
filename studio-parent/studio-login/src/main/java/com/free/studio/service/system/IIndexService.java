@@ -3,6 +3,7 @@ package com.free.studio.service.system;
 import java.util.List;
 
 import com.free.studio.pojo.system.BsMenu;
+import com.free.studio.view.system.MenuView;
 
 /**
  * <p>Title: IIndexService.java</p>
@@ -21,4 +22,22 @@ public interface IIndexService {
 	 * @return
 	 */
 	public List<BsMenu> findTopMenu();
+
+	/**
+	 *
+	 * <p>Title: findLeftMenu</p>
+	 * <p>Description: 获取左侧菜单</p>
+	 * @param parentId
+	 * @return
+	 */
+	public MenuView findLeftMenu(String parentId);
+	
+	/**
+	 * 
+	 * <p>Title: getMenuFromId</p>
+	 * <p>Description: 根据菜单编号获取菜单对象</p>
+	 * @param MenuId
+	 * @return
+	 */
+	public BsMenu getMenuFromId(String menuId);
 }

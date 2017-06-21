@@ -46,6 +46,17 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>studio-console</servlet-name>
+		<!-- 伪静态化 -->
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>studio-console</servlet-name>
+		<!-- 伪静态化 -->
+		<url-pattern>*.shtml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>studio-console</servlet-name>
+		<!-- 伪静态化 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>
